@@ -32,9 +32,17 @@ namespace Contract.Controllers
 
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<Models.Contract, ContractDTO>()
-                .ForMember(dto => dto.Stages, opt => opt.MapFrom(x => x.StageContracts.Select(y => y.Stage)));
-
-                cfg.CreateMap<Stage, StageDTO>();
+                .ForMember(dto => dto.Stages, 
+                            opt => opt.MapFrom(
+                                x => x.StageContracts.Select(y => new StageDTO() {
+                                                                                    StageName = y.Stage.StageName,
+                                                                                    FactCompletionDate = y.FactCompletionDate,
+                                                                                    PlanCompletionDate = y.PlanCompletionDate,
+                                                                                    ProjCompletionDate = y.ProjCompletionDate
+                                                                                }
+                                                            )
+                                                )
+                            );
 
                 cfg.CreateMap<ContractDTO, Models.Contract>()
                     .ForMember(
@@ -51,7 +59,7 @@ namespace Contract.Controllers
             });
 
             //var contracts = _context.Contract.Include(c => c.StageContracts).
-            //    ThenInclude(sc => sc.Stage).
+            //    ThenInclude(sc => sc.Stage).ToList().
             //    Select<Models.Contract, ContractDTO>(c =>
             //    {
             //        var stages = c.StageContracts.Select(sc => new StageDTO()
@@ -61,7 +69,7 @@ namespace Contract.Controllers
             //            ProjCompletionDate = sc.ProjCompletionDate,
             //            FactCompletionDate = sc.FactCompletionDate
             //        });
-            //        new ContractDTO()
+            //        return new ContractDTO()
             //        {
             //            ContractName = c.ContractName,
             //            PlanCost = c.PlanCost,

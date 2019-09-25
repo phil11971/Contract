@@ -7,6 +7,7 @@ namespace Contract.Models.DTO
 {
     public class StageDTO
     {
+        public int StageId { get; set; }
         public string StageName { get; set; }
 
         public DateTime PlanCompletionDate { get; set; }
