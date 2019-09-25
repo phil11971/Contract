@@ -14,11 +14,16 @@ export class DataService {
     return this.http.get(this.url);
   }
 
-  createContract(contract: Contract) {
+  getStages()
+  {
+    return this.http.get("/api/stages");
+  }
+
+  addContract(contract: Contract) {
     return this.http.post(this.url, contract);
   }
   updateContract(contract: Contract) {
-    return this.http.put(this.url + '/' + contract.id, contract);
+    return this.http.put(this.url + '/' + contract.contractId, contract);
   }
   deleteContract(id: number) {
     return this.http.delete(this.url + '/' + id);

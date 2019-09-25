@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ContractComponent } from './contract/contract.component';
 import { RefbookComponent } from './refbook/refbook.component';
+import { AddcontractComponent } from './contract/addcontract/addcontract.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RefbookComponent } from './refbook/refbook.component';
     NavMenuComponent,
     ContractComponent,
     RefbookComponent,
+    AddcontractComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -23,6 +25,7 @@ import { RefbookComponent } from './refbook/refbook.component';
     RouterModule.forRoot([
       { path: '', component: ContractComponent, pathMatch: 'full' },
       { path: 'refbooks', component: RefbookComponent },
+      { path: 'addcontract', component: AddcontractComponent },
     ])
   ],
   providers: [],
