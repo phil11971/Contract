@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
@@ -22,6 +23,7 @@ import { AddcontractComponent } from './contract/addcontract/addcontract.compone
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    MatSelectModule,
     RouterModule.forRoot([
       { path: '', component: ContractComponent, pathMatch: 'full' },
       { path: 'refbooks', component: RefbookComponent },

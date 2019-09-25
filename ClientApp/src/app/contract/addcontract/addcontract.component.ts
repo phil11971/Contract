@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Contract from '../../Contract';
 import { DataService } from '../../data.service';
 import Stage from '../../Stage';
-import { NgForm, FormControl } from '@angular/forms';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-addcontract',
@@ -16,7 +14,7 @@ export class AddcontractComponent implements OnInit {
 
   contract: Contract = new Contract()   // изменяемый товар
   stages: Stage[]
-  selectedStages: any[] = []
+  stagesControl = new FormControl();
 
   constructor(private dataService: DataService) { }
 
@@ -29,8 +27,8 @@ export class AddcontractComponent implements OnInit {
       .subscribe((data: Stage[]) => { this.stages = data; console.log(JSON.stringify(data)); });
   }
 
-  changeStages(form: NgForm) {
-    this.selectedStages = (<FormControl>form.controls['selectedStages']).value;
+  changeStages(value) {
+    console.log(value);
   }
 
   // сохранение данных
