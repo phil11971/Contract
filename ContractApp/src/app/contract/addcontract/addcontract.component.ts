@@ -27,8 +27,8 @@ export class AddcontractComponent implements OnInit {
       .subscribe((data: Stage[]) => { this.stages = data; console.log(JSON.stringify(data)); });
   }
 
-  changeStages(value) {
-    console.log(value);
+  changeStages() {
+    this.stagesControl.valueChanges.subscribe( x => console.log(x));
   }
 
   // сохранение данных

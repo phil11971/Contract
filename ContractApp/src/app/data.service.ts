@@ -19,6 +19,11 @@ export class DataService {
     return this.http.get("/api/stages");
   }
 
+  getStagesDTO()
+  {
+    return this.http.get("/api/stagesdto");
+  }
+
   addContract(contract: Contract) {
     return this.http.post(this.url, contract);
   }

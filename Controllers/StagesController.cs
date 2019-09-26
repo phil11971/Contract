@@ -25,17 +25,19 @@ namespace Contract.Controllers
 
         // GET: api/Stages
         [HttpGet]
-        public IEnumerable<StageDTO> GetStage()
+        public IEnumerable<Stage> GetStage()
         {
-            var config = new MapperConfiguration(cfg => {
+            //var config = new MapperConfiguration(cfg => {
+            //
+            //    cfg.CreateMap<Stage, StageDTO>();
+            //
+            //});
+            //
+            //var stagesDTO = _context.Stage.ProjectTo<StageDTO>(config);
 
-                cfg.CreateMap<Stage, StageDTO>();
 
-            });
+            return _context.Stage.ToList();
 
-            var stagesDTO = _context.Stage.ProjectTo<StageDTO>(config);
-
-            return stagesDTO.ToList();
         }
 
         // GET: api/Stages/5

@@ -48,6 +48,7 @@ namespace Contract
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseDefaultFiles();
             app.UseSpaStaticFiles();
 
             app.UseMvc(routes =>
@@ -62,7 +63,7 @@ namespace Contract
                 // To learn more about options for serving an Angular SPA from ASP.NET Core,
                 // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.SourcePath = "ContractApp";
 
                 if (env.IsDevelopment())
                 {
