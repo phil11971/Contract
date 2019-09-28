@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import Stage from '../Stage';
 import { DataService } from '../data.service';
+import { Stage } from '../Stage';
 
 @Component({
   selector: 'ref-book',

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Contract from '../../Contract';
 import { DataService } from '../../data.service';
-import Stage from '../../Stage';
-import { FormControl } from '@angular/forms';
+import { Stage } from 'src/app/Stage';
 
 @Component({
   selector: 'app-addcontract',
@@ -12,14 +11,15 @@ import { FormControl } from '@angular/forms';
 })
 export class AddcontractComponent implements OnInit {
 
-  contract: Contract = new Contract()   // изменяемый товар
-  stages: Stage[]
-  stagesControl = new FormControl();
+  contract: Contract = new Contract() //новый контракт
+  stages: Stage[] = [] // Stages для select'a
+  filterStages: Stage[] = [] // новые Stages контракта
+  myselectedStages: number[] = [] //выбраннные значения в select'e
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.loadStages();    // загрузка данных при старте компонента  
+    this.loadStages();
   }
 
   loadStages() {
@@ -28,12 +28,19 @@ export class AddcontractComponent implements OnInit {
   }
 
   changeStages() {
-    this.stagesControl.valueChanges.subscribe( x => console.log(x));
+    console.log(this.myselectedStages)
+    let mas = this.myselectedStages.concat()
+    this.filterStages = this.stages.filter(function(e) {
+      return mas.some(function(a) {
+        return e.stageId == a
+      })
+    })
   }
 
   // сохранение данных
   save() {
     if (this.contract.contractId == null) {
+      this.contract.stages = this.filterStages;
       this.dataService.addContract(this.contract)
     } else {
       this.dataService.updateContract(this.contract)

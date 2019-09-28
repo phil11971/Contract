@@ -13,6 +13,6 @@ namespace Contract.Models.DTO
 
         public decimal FactCost { get; set; }
 
-        public IEnumerable<StageDTO> Stages { get; set; }
+        public IEnumerable<ContractStageDTO> Stages { get; set; }
     }
 }

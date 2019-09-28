@@ -11,17 +11,12 @@ export class DataService {
   }
 
   getContracts() {
-    return this.http.get(this.url);
+    return this.http.get("/api/contracts");
   }
 
   getStages()
   {
-    return this.http.get("/api/stages");
-  }
-
-  getStagesDTO()
-  {
-    return this.http.get("/api/stagesdto");
+    return this.http.get("/api/stages")
   }
 
   addContract(contract: Contract) {

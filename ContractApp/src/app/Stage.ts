@@ -1,10 +1,15 @@
-export default class Stage {
-  constructor(
-    public stageId: number,
-    public stageName: string,
-    public minCntDays: number,
-    public comment: string,
-    public planCompletionDate?: Date,
-    public projCompletionDate?: Date,
-    public factCompletionDate?: Date) { }
+export class Stage {
+    stageId: number
+    stageName: string
+    minCntDays: number
+    comment: string
+    planCompletionDate?: Date
+    projCompletionDate?: Date
+    factCompletionDate?: Date
+
+    constructor(stageId, stageName)
+    {
+      this.stageId = stageId
+      this.stageName = stageName
+    }
 }
