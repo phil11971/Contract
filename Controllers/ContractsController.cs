@@ -141,35 +141,6 @@ namespace Contract.Controllers
         [HttpPost]
         public async Task<IActionResult> PostContract([FromBody] ContractDTO contract)
         {
-            var config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Models.Contract, ContractDTO>()
-                .ForMember(dto => dto.Stages,
-                            opt => opt.MapFrom(
-                                x => x.StageContracts.Select(y => new ContractStageDTO()
-                                {
-                                    StageName = y.Stage.StageName,
-                                    FactCompletionDate = y.FactCompletionDate,
-                                    PlanCompletionDate = y.PlanCompletionDate,
-                                    ProjCompletionDate = y.ProjCompletionDate
-                                }
-                                                            )
-                                                )
-                            );
-
-                cfg.CreateMap<ContractDTO, Models.Contract>()
-                    .ForMember(
-                        opt => opt.StageContracts,
-                        dto => dto.MapFrom(x => x.Stages))
-                    .AfterMap((model, entity) =>
-                    {
-                        foreach (var stageContract in entity.StageContracts)
-                        {
-                            stageContract.Contract = entity;
-                        }
-                    });
-
-            });
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
